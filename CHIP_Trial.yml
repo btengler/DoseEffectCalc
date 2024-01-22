@@ -1,0 +1,93 @@
+prescribed_dose:
+  organ: 
+    - PTV_60
+    - PTV_57_6
+  dose:
+    - 60
+    - 57.6
+
+organs:
+  PTV_60:
+    organ_num: 0
+    costfunctions:
+      -costfunction0:
+        type: EUD
+        dose: 60
+        alpha: 0.5
+      -costfunction1:
+        type: Quadratic
+        dose: 60
+  PTV_57_6:
+    organ_num: 1
+    costfunctions:
+      -costfunction0:
+        type: EUD
+        dose: 57.6
+        alpha: 0.5
+        shrink: 
+         - 0
+        shrink_margin: 
+         - 0
+      -costfunction1:
+        type: Quadratic
+        dose: 57.6
+        shrink: 
+         - 0
+        shrink_margin: 
+         - 3
+      -costfunction2:
+        type: Quadratic
+        dose: 60
+        shrink:
+         - 0
+        shrink_margin:
+         - 0
+  Anorectum:
+    organ_num: 2
+    costfunctions:
+      -costfunction0:
+        type: Serial
+        exponent: 12
+      -costfunction1:
+        type: Serial
+        exponent: 4
+        shrink: 
+          - 0
+          - 1
+        shrink_margin: 
+          - 0
+          - 0
+      -costfunction2:
+        type: Parallel
+        exponent: 4
+        dose: 30
+        shrink: 
+          - 0
+          - 1
+        shrink_margin: 
+          - 0
+          - 0
+      -costfunction3:
+        type: Quadratic
+        dose: 59
+  Bladder:
+    organ_num: 3
+    costfunctions:
+      -costfunction0:
+        type: Serial
+        exponent: 8
+      -costfunction1:
+        type: Quadratic
+        dose: 59.8
+  FemoralHead_L:
+    organ_num: 4
+    costfunctions:
+      -costfunction0:
+        type: Quadratic
+        dose: 59
+  FemoralHead_R:
+    organ_num: 4
+    costfunctions:
+      -costfunction0:
+        type: Quadratic
+        dose: 59
